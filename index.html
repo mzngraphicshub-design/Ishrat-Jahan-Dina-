@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Dearest Dina ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 10px;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    /* Background Canvas Animation */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Main Container */
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      padding: 30px 20px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(220, 53, 69, 0.2);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* Music Floating Button */
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Step 1: Envelope Screen */
+    .envelope-card {
+      cursor: pointer;
+      padding: 40px 20px;
+    }
+    .envelope-icon {
+      font-size: 85px;
+      animation: pulse 1.5s infinite;
+      display: inline-block;
+    }
+
+    /* Typewriter Text */
+    .typewriter-text {
+      font-size: 19px;
+      color: #d63384;
+      font-weight: 700;
+      min-height: 60px;
+      margin: 15px 0;
+      line-height: 1.5;
+    }
+
+    /* Love Counter */
+    .timer-box {
+      background: #fff0f3;
+      border: 2px dashed #ff4d6d;
+      padding: 12px;
+      border-radius: 15px;
+      margin: 15px 0;
+      font-size: 16px;
+      color: #c9184a;
+      font-weight: bold;
+    }
+
+    /* Memory Gallery */
+    .memory-container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .polaroid {
+      background: white;
+      padding: 8px 8px 15px 8px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      transform: rotate(-3deg);
+      border-radius: 10px;
+      width: 48%;
+      transition: transform 0.3s;
+    }
+    .polaroid:nth-child(2) {
+      transform: rotate(3deg);
+    }
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+    }
+    .polaroid img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .polaroid p {
+      font-size: 13px;
+      margin-top: 8px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    /* Interactive Reasons Box */
+    .reasons-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff4d6d;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .reason-card {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      border: 1px solid #ffccd5;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+    .reason-card:hover {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    /* Love Coupons */
+    .coupon-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #d63384;
+      margin: 15px 0 10px 0;
+    }
+    .coupon {
+      background: linear-gradient(45deg, #ffe6e8, #ffffff);
+      border: 1px dashed #ff4d6d;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #a4133c;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .coupon span.tag {
+      background: #ff4d6d;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      position: relative;
+      min-height: 55px;
+    }
+    button.action-btn {
+      padding: 12px 28px;
+      font-size: 17px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .btn-yes {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    }
+    .btn-yes:hover {
+      transform: scale(1.1);
+    }
+    .btn-no {
+      background: #6c757d;
+      color: white;
+      position: absolute;
+    }
+
+    /* Utility */
+    .hidden {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+
+    /* Floating Heart Particles */
+    .heart-particle {
+      position: fixed;
+      top: -10vh;
+      font-size: 24px;
+      animation: fall 3s linear forwards;
+      z-index: 1000;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Music Toggle Button -->
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+  <!-- Background Canvas for Floating Hearts -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Audio Track -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Step 1: Secret Envelope -->
+  <div class="container envelope-card" id="step1" onclick="openSurprise()">
+    <div class="envelope-icon">💌</div>
+    <h2 style="color: #d63384; margin-top: 15px;">A Secret Surprise</h2>
+    <p style="color: #666; margin-top: 8px; font-size: 18px;">For <b>Ishrat Jahan Dina</b></p>
+    <p style="font-size: 13px; color: #888; margin-top: 20px; background: #fff0f3; padding: 6px 12px; border-radius: 15px; display: inline-block;">
+      ✨ চিঠিটি খুলতে এখানে টাচ করো ✨
+    </p>
+  </div>
+
+  <!-- Step 2: Main Surprise Screen -->
+  <div class="container hidden" id="step2">
+    <h1 style="color: #ff4d6d; font-size: 24px;">প্রিয় ইশরাত জাহান দিনা ❤️</h1>
+    
+    <!-- Typewriter Effect -->
+    <div class="typewriter-text" id="typewriter"></div>
+
+    <!-- Love Timer -->
+    <div class="timer-box" id="loveTimer">
+      ভালোবাসার পথচলা: <span id="daysCount">...</span> দিন! 💖
+    </div>
+
+    <!-- Photo Memory Gallery -->
+    <div class="memory-container">
+      <div class="polaroid">
+        <img src="dina1.jpg" alt="Dina">
+        <p>তোমার ঐ মিষ্টি হাসি 🌸</p>
+      </div>
+      <div class="polaroid">
+        <img src="dina2.jpg" alt="Us">
+        <p>একসাথে সুন্দর স্মৃতি 💖</p>
+      </div>
+    </div>
+
+    <!-- Interactive Reasons -->
+    <div class="reasons-title">কেন তুমি আমার কাছে এত স্পেশাল? 🙈 (ক্লিক করো)</div>
+    <div class="reasons-grid">
+      <div class="reason-card" onclick="alert('তোমার এক চিলতে হাসি আমার সারাদিনের ক্লান্তি দূর করে দেয়! 🌸')">
+        ১. তোমার হাসি ✨
+      </div>
+      <div class="reason-card" onclick="alert('মন খারাপের দিনে তোমার মিষ্টি গলায় কথা বলাটা আমার সবচেয়ে প্রিয়। 📞')">
+        ২. তোমার কথা 🎶
+      </div>
+      <div class="reason-card" onclick="alert('তোমার মিষ্টি অভিমানগুলো আমাকে আরও বেশি ভালোবাসতে শেখায়! 🙈')">
+        ৩. তোমার অভিমান 🌹
+      </div>
+      <div class="reason-card" onclick="alert('তুমি যেভাবে আমাকে সবসময় আগলে রাখো, তা সত্যি অমূল্য! ❤️')">
+        ৪. তোমার যত্ন 💖
+      </div>
+    </div>
+
+    <!-- Love Coupons -->
+    <div class="coupon-title">তোমার জন্য বিশেষ ভালোবাসার কুপন 🎟️</div>
+    <div class="coupon" onclick="redeemCoupon(this)">
+      <span>🚲 ১টি স্পেশাল রিকশা ও কফি ডেট</span>
+      <span class="tag">REDEEM</span>
+    </div>
+    <div class="coupon" onclick="redeemCoupon(this)">
+      <span>🧸 যেকোনো সময় অভিমান ভাঙানোর পাস</span>
+      <span class="tag">REDEEM</span>
+    </div>
+    <div class="coupon" onclick="redeemCoupon(this)">
+      <span>🌙 সারারাত মন খুলে গল্প করার ফ্রি পাস</span>
+      <span class="tag">REDEEM</span>
+    </div>
+
+    <p style="font-size: 16px; font-weight: bold; color: #333; margin-top: 25px;">
+      সারাজীবন ঠিক এভাবেই আমার পাশে থাকবে তো, দিনা? 🥺
+    </p>
+
+    <!-- Buttons -->
+    <div class="btn-group">
+      <button class="action-btn btn-yes" onclick="sheSaidYes()">হ্যাঁ, অবশ্যই! 🥰</button>
+      <button class="action-btn btn-no" id="noBtn" onmouseover="dodgeButton()" ontouchstart="dodgeButton()" onclick="dodgeButton()">না 😜</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Celebration Screen -->
+  <div class="container hidden" id="step3">
+    <h1 style="color: #ff4d6d; font-size: 28px;">I Knew It, Dina! 💖🎉</h1>
+    
+    <div style="background: #fff; padding: 15px; border-radius: 15px; margin: 15px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: left; line-height: 1.7; font-size: 15px; color: #444;">
+      <p><b>প্রিয় দিনা,</b></p>
+      <p>তোমার ভালোবাসাই আমার জীবনের সব আনন্দ। আজ এই কোডের প্রতিটি লাইনে যেমন ভালোবাসা মিশে আছে, তেমনি আমার প্রতিটি অনুভূতির ঠিকানা শুধু তুমি।</p>
+      <br>
+      <p>প্রতিশ্রুতি দিলাম— সবসময় তোমার মুখে হাসি ফুটিয়ে রাখবো এবং তোমার হাতটা সারাজীবন শক্ত করে ধরে রাখবো। 🌹</p>
+      <br>
+      <p style="text-align: right; font-weight: bold; color: #ff4d6d;">— সবসময় তোমার ❤️</p>
+    </div>
+
+    <div style="font-size: 45px; margin-top: 10px;">👩‍❤️‍👨 💍 🥂 🌹</div>
+  </div>
+
+  <script>
+    // 1. Love Counter Logic (সম্পর্কের শুরুর তারিখ YYYY-MM-DD)
+    const startDate = new Date("2023-01-01"); 
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("daysCount").innerText = diffDays;
+
+    // 2. Music Player Logic
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        document.getElementById("musicBtn").innerText = "🔇";
+      } else {
+        music.play();
+        document.getElementById("musicBtn").innerText = "🎵";
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // 3. Typewriter Romantic Messages for Dina
+    const messages = [
+      "পৃথিবীর সব রূপকথা একপাশে, আর তোমার এক চিলতে হাসি অন্যপাশে...",
+      "দিনা, তোমার নামটাই যেন আমার সব আনন্দের ঠিকানা।",
+      "তুমি পাশে থাকলে যেকোনো সাধারণ দিনও অসাধারণ হয়ে যায়!",
+      "আজ এক অজানা উপায়ে তোমাকে মনের কথা বলতে চাই..."
+    ];
+    let msgIndex = 0;
+    let charIndex = 0;
+
+    function typeWriter() {
+      if (msgIndex < messages.length) {
+        if (charIndex < messages[msgIndex].length) {
+          document.getElementById("typewriter").innerHTML += messages[msgIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeWriter, 70);
+        } else {
+          setTimeout(() => {
+            document.getElementById("typewriter").innerHTML = "";
+            charIndex = 0;
+            msgIndex++;
+            typeWriter();
+          }, 1800);
+        }
+      } else {
+        document.getElementById("typewriter").innerHTML = "তুমি কি সারাজীবন আমার জীবনের সেরা উপহার হয়ে থাকবে? ✨";
+      }
+    }
+
+    // 4. Open Envelope
+    function openSurprise() {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+      
+      music.play().then(() => { isPlaying = true; }).catch(e => console.log("Audio waiting for user click"));
+      typeWriter();
+
+      const noBtn = document.getElementById("noBtn");
+      noBtn.style.right = "30px";
+    }
+
+    // 5. Dodging No Button (Works on Touch + Mouse)
+    function dodgeButton() {
+      const btn = document.getElementById('noBtn');
+      const container = document.getElementById('step2');
+      const rect = container.getBoundingClientRect();
+
+      const maxX = rect.width - btn.offsetWidth - 20;
+      const maxY = rect.height - btn.offsetHeight - 20;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btn.style.left = randomX + 'px';
+      btn.style.top = randomY + 'px';
+    }
+
+    // 6. Redeem Coupon Logic
+    function redeemCoupon(element) {
+      const tag = element.querySelector('.tag');
+      if (tag.innerText === "REDEEM") {
+        tag.innerText = "CLAIMED! ❤️";
+        tag.style.background = "#28a745";
+        element.style.background = "#e8f5e9";
+        alert("কুপনটি রিডিম করা হয়েছে! দিনাকে এই উপহার দিতে তুমি বাধ্য। 🙈");
+      }
+    }
+
+    // 7. She Said Yes Celebration
+    function sheSaidYes() {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+
+      for (let i = 0; i < 70; i++) {
+        setTimeout(createHeart, i * 70);
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-particle');
+      const symbols = ['❤️', '💖', '🌹', '✨', '💕', '🌸', '💍'];
+      heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    // 8. Subtle Canvas Background Animation
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let hearts = [];
+    for (let i = 0; i < 25; i++) {
+      hearts.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 8 + 4,
+        speedY: Math.random() * 1 + 0.5,
+        opacity: Math.random() * 0.5 + 0.3
+      });
+    }
+
+    function animateCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(255, 77, 109, ";
+
+      hearts.forEach(h => {
+        ctx.beginPath();
+        ctx.arc(h.x, h.y, h.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 117, 140, ${h.opacity})`;
+        ctx.fill();
+
+        h.y -= h.speedY;
+        if (h.y < 0) {
+          h.y = canvas.height;
+          h.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animateCanvas);
+    }
+    animateCanvas();
+  </script>
+</body>
+</html>
 
