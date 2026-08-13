@@ -3,384 +3,319 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DinaOS v1.0 — Ishrat Jahan Dina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>The Dina Pink Universe ✨ | Ishrat Jahan Dina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+      font-family: 'Hind Siliguri', sans-serif;
       user-select: none;
     }
 
     body {
-      height: 100vh;
+      background: radial-gradient(circle at center, #ff85a1 0%, #ff4d6d 45%, #590d22 100%);
+      min-height: 100vh;
       width: 100vw;
-      background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1600') no-repeat center center fixed;
-      background-size: cover;
       overflow: hidden;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
 
-    /* Blur Layer */
-    .os-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255, 182, 193, 0.25);
-      backdrop-filter: blur(8px);
+    /* Pink Canvas */
+    #spaceCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 1;
     }
 
-    /* Lock Screen */
-    #lockScreen {
-      position: absolute;
-      z-index: 100;
-      width: 100%; height: 100%;
-      background: rgba(15, 10, 25, 0.7);
-      backdrop-filter: blur(20px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      transition: all 0.8s ease;
-    }
-    .profile-pic {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      border: 3px solid #ff4d6d;
-      box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
-      margin-bottom: 15px;
-      object-fit: cover;
-    }
-    .unlock-btn {
-      margin-top: 25px;
-      padding: 12px 35px;
-      border-radius: 30px;
-      border: none;
-      background: linear-gradient(45deg, #ff4d6d, #ff758f);
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255, 77, 109, 0.5);
-      transition: transform 0.2s;
-    }
-    .unlock-btn:hover { transform: scale(1.08); }
-
-    /* Top macOS Menu Bar */
-    .top-bar {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 32px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(15px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      color: white;
-      font-size: 13px;
-      font-weight: 600;
+    /* Main Container */
+    .galaxy-container {
+      position: relative;
       z-index: 10;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    /* Desktop Icons Grid */
-    .desktop-grid {
-      position: absolute;
-      top: 50px; left: 20px;
-      display: grid;
-      grid-template-columns: repeat(1, 90px);
-      gap: 25px;
-      z-index: 5;
-    }
-    .icon-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-      transition: transform 0.2s;
-    }
-    .icon-item:hover { transform: scale(1.1); }
-    .icon-box {
-      width: 60px; height: 60px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .icon-label {
-      font-size: 12px;
-      margin-top: 6px;
-      font-weight: 600;
       text-align: center;
-    }
-
-    /* macOS Floating Window */
-    .mac-window {
-      position: absolute;
       width: 90%;
-      max-width: 450px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px);
-      border-radius: 18px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      z-index: 20;
+      max-width: 500px;
+    }
+
+    .title-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px #ff758f;
+      margin-bottom: 5px;
+    }
+
+    .title-header p {
+      font-size: 15px;
+      color: #fff0f3;
+      opacity: 0.95;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Floating Pink Glass Cards */
+    .orbs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 15px;
+    }
+
+    .orb-card {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      border-radius: 22px;
+      padding: 22px 12px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(89, 13, 34, 0.3);
+      position: relative;
       overflow: hidden;
-      display: none;
-      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
-    .window-header {
-      background: rgba(240, 240, 240, 0.6);
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-    .window-dots {
-      display: flex; gap: 7px;
-    }
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .dot-close { background: #ff5f56; cursor: pointer; }
-    .dot-min { background: #ffbd2e; }
-    .dot-max { background: #27c93f; }
-    .window-title {
-      flex-grow: 1; text-align: center; font-size: 13px; font-weight: 700; color: #555;
-      margin-right: 35px;
-    }
-    .window-body {
-      padding: 20px;
-      max-height: 70vh;
-      overflow-y: auto;
+    .orb-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      background: rgba(255, 255, 255, 0.32);
+      border-color: #fff;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
     }
 
-    /* App Contents */
-    .letter-text {
-      font-size: 15px; color: #333; line-height: 1.7; text-align: left; white-space: pre-line;
+    .orb-icon {
+      font-size: 38px;
+      margin-bottom: 8px;
+      display: inline-block;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+      animation: float 3s ease-in-out infinite;
     }
-    .gallery-flex {
-      display: flex; gap: 10px; justify-content: center;
+
+    .orb-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
-    .gallery-card {
-      width: 48%; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    /* Modal / Popups */
+    .cosmic-modal {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 88%;
+      max-width: 430px;
+      background: rgba(255, 240, 243, 0.94);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 2px solid #ff758f;
+      box-shadow: 0 15px 40px rgba(89, 13, 34, 0.4);
+      border-radius: 25px;
+      padding: 30px 20px;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+      text-align: center;
+      color: #590d22;
     }
-    .gallery-card img {
-      width: 100%; height: 120px; object-fit: cover; border-radius: 6px;
+
+    .cosmic-modal.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 24px;
+      color: #ff4d6d;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Polaroid Cards Inside Modal */
+    .modal-gallery {
+      display: flex; gap: 10px; justify-content: center; margin-top: 15px;
+    }
+    .modal-gallery img {
+      width: 48%; height: 130px; object-fit: cover; border-radius: 12px; border: 3px solid #ffffff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
 
     /* Proposal Buttons */
     .btn-group {
-      display: flex; justify-content: center; gap: 15px; margin-top: 20px; position: relative; min-height: 50px;
+      display: flex; justify-content: center; gap: 15px; margin-top: 25px; position: relative; min-height: 50px;
     }
     .btn-yes {
-      padding: 10px 25px; background: #ff4d6d; color: white; border: none; border-radius: 20px; font-size: 16px; font-weight: bold; cursor: pointer;
+      padding: 12px 30px; background: linear-gradient(45deg, #ff4d6d, #c9184a); color: white; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.5);
     }
     .btn-no {
-      padding: 10px 25px; background: #6c757d; color: white; border: none; border-radius: 20px; font-size: 16px; font-weight: bold; position: absolute;
+      padding: 12px 30px; background: #800f2f; color: white; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; position: absolute;
     }
 
-    /* Dock Bar at Bottom */
-    .dock-bar {
-      position: absolute;
-      bottom: 15px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px);
-      padding: 10px 20px;
-      border-radius: 24px;
-      display: flex; gap: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      z-index: 10;
+    /* Music Control Floating Button */
+    .music-btn {
+      position: fixed;
+      top: 15px; right: 15px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      color: white; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 1000;
     }
 
-    /* Utility */
-    .hidden { display: none !important; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
   </style>
 </head>
 <body>
 
-  <div class="os-overlay"></div>
+  <!-- Floating Music Toggle -->
+  <button class="music-btn" onclick="toggleMusic()" id="musicIcon">🎵</button>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3" type="audio/mpeg">
+  <!-- Audio Source: Chill Bangla Lofi Track -->
+  <audio id="bgMusic" loop preload="auto">
+    <!-- পছন্দের কোনো নির্দিষ্ট গান দিতে চাইলে 'bangla_lofi.mp3' ফাইলের নাম বা লিংক বসিয়ে দিতে পারো -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/11/06/audio_c9e0a2df3d.mp3?filename=chill-lofi-song-8444.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Lock Screen -->
-  <div id="lockScreen">
-    <!-- দিনার ছবি (dina1.jpg) -->
-    <img src="dina1.jpg" alt="Dina" class="profile-pic" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400'">
-    <h2 style="font-size: 22px;">Ishrat Jahan Dina</h2>
-    <p style="font-size: 13px; color: #ffb3c1; margin-top: 5px;">Welcome to DinaOS v1.0</p>
-    <button class="unlock-btn" onclick="unlockOS()">Unlock My Heart 🔒</button>
-  </div>
+  <!-- Pink Canvas -->
+  <canvas id="spaceCanvas"></canvas>
 
-  <!-- Top macOS Bar -->
-  <div class="top-bar">
-    <div><b>DinaOS</b> &nbsp; File &nbsp; Edit &nbsp; Love</div>
-    <div id="liveClock">12:00 PM</div>
-    <div>100% ❤️</div>
-  </div>
+  <!-- Main Screen -->
+  <div class="galaxy-container">
+    <div class="title-header">
+      <h1>DINA'S PINK WORLD</h1>
+      <p>গোলাপী স্বপ্নের রাজত্বে ইশরাত জাহান দিনাকে স্বাগতম 🌸</p>
+    </div>
 
-  <!-- Desktop Icons -->
-  <div class="desktop-grid">
-    <div class="icon-item" onclick="openWindow('windowLetter')">
-      <div class="icon-box">💌</div>
-      <div class="icon-label">Letter.txt</div>
-    </div>
-    <div class="icon-item" onclick="openWindow('windowGallery')">
-      <div class="icon-box">🖼️</div>
-      <div class="icon-label">Memories</div>
-    </div>
-    <div class="icon-item" onclick="openWindow('windowMusic')">
-      <div class="icon-box">🎵</div>
-      <div class="icon-label">Music</div>
-    </div>
-    <div class="icon-item" onclick="openWindow('windowProposal')">
-      <div class="icon-box">💍</div>
-      <div class="icon-label">Secret.exe</div>
-    </div>
-  </div>
-
-  <!-- Window 1: Love Letter -->
-  <div class="mac-window" id="windowLetter">
-    <div class="window-header">
-      <div class="window-dots"><div class="dot dot-close" onclick="closeWindow('windowLetter')"></div><div class="dot dot-min"></div><div class="dot dot-max"></div></div>
-      <div class="window-title">Love_Letter_For_Dina.txt</div>
-    </div>
-    <div class="window-body">
-      <div class="letter-text">
-        <b>প্রিয় দিনা,</b>
-
-        তুমি আসার পর আমার চেনা পৃথিবীটা রূপকথার মতো সুন্দর হয়ে গেছে। তোমার ঐ মিষ্টি হাসি, অমূল্য কথা আর মিষ্টি অভিমানগুলোই এখন আমার সারাদিনের সেরা আনন্দ।
-
-        আজ এই কাস্টম সিস্টেমে একটাই বার্তা— তুমি আমার লাইফের সবচেয়ে সুন্দর উপহার! ❤️
+    <div class="orbs-grid">
+      <div class="orb-card" onclick="openModal('modalLetter')">
+        <div class="orb-icon">💌</div>
+        <div class="orb-title">গোলাপী চিঠি</div>
+      </div>
+      <div class="orb-card" onclick="openModal('modalGallery')">
+        <div class="orb-icon">📸</div>
+        <div class="orb-title">মিষ্টি স্মৃতিরা</div>
+      </div>
+      <div class="orb-card" onclick="openModal('modalMagic')">
+        <div class="orb-icon">💖</div>
+        <div class="orb-title">ভালোবাসার সমীকরণ</div>
+      </div>
+      <div class="orb-card" onclick="openModal('modalProposal')">
+        <div class="orb-icon">💍</div>
+        <div class="orb-title">বিশেষ প্রস্তাব</div>
       </div>
     </div>
   </div>
 
-  <!-- Window 2: Gallery -->
-  <div class="mac-window" id="windowGallery">
-    <div class="window-header">
-      <div class="window-dots"><div class="dot dot-close" onclick="closeWindow('windowGallery')"></div><div class="dot dot-min"></div><div class="dot dot-max"></div></div>
-      <div class="window-title">Memories_Album</div>
+  <!-- Modal 1: Letter -->
+  <div class="cosmic-modal" id="modalLetter">
+    <span class="close-btn" onclick="closeModal('modalLetter')">&times;</span>
+    <h2 style="color: #c9184a; font-size: 22px; margin-bottom: 10px;">প্রিয় ইশরাত জাহান দিনা 🌸</h2>
+    <p style="font-size: 15px; line-height: 1.7; color: #590d22; text-align: left;">
+      আমার পুরোটা জুড়ে শুধু তোমার উপস্থিতি। তোমার এই মিষ্টি হাসি, অমূল্য অভিমান আর এক আকাশ ভালোবাসাই আমার বেঁচে থাকার সেরা অনুপ্রেরণা।
+      <br><br>
+      আজকের এই লোর বাংলা সুমো আর পিংক পৃথিবীর প্রতিটি আলো শুধু তোমার মিষ্টি হাসির জন্য সাজানো! ❤️
+    </p>
+  </div>
+
+  <!-- Modal 2: Gallery -->
+  <div class="cosmic-modal" id="modalGallery">
+    <span class="close-btn" onclick="closeModal('modalGallery')">&times;</span>
+    <h2 style="color: #c9184a; font-size: 20px;">মিষ্টি কিছু মুহূর্ত 📸</h2>
+    <div class="modal-gallery">
+      <img src="dina1.jpg" alt="Dina 1" onerror="this.src='https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400'">
+      <img src="dina2.jpg" alt="Dina 2" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400'">
     </div>
-    <div class="window-body">
-      <div class="gallery-flex">
-        <div class="gallery-card">
-          <img src="dina1.jpg" alt="Dina 1" onerror="this.src='https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400'">
-          <p style="font-size: 12px; margin-top: 5px; font-weight: bold; text-align: center;">প্রিয় রূপবতী 🌸</p>
-        </div>
-        <div class="gallery-card">
-          <img src="dina2.jpg" alt="Dina 2" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400'">
-          <p style="font-size: 12px; margin-top: 5px; font-weight: bold; text-align: center;">স্মৃতির পাতা 💖</p>
-        </div>
-      </div>
+    <p style="font-size: 14px; color: #a4133c; margin-top: 12px; font-weight: bold;">তুমি হাসলে আমার পুরো পৃথিবী হেসে ওঠে ✨</p>
+  </div>
+
+  <!-- Modal 3: Magic Predictor -->
+  <div class="cosmic-modal" id="modalMagic">
+    <span class="close-btn" onclick="closeModal('modalMagic')">&times;</span>
+    <h2 style="color: #c9184a; font-size: 20px;">প্রেমের রাশিফল 🔮</h2>
+    <div style="background: #fff0f3; padding: 15px; border-radius: 15px; margin-top: 15px; font-size: 14px; line-height: 1.6; color: #800f2f; border: 1px dashed #ff4d6d;">
+      <b>গ্রহ ও নক্ষত্রের ভবিষ্যৎবাণী:</b>
+      <br>
+      ইশরাত জাহান দিনাকে সারা জীবন অতিরিক্ত আদরে ও ভালোবাসায় মুড়িয়ে রাখা হবে! 🙈❤️
     </div>
   </div>
 
-  <!-- Window 3: Music Player -->
-  <div class="mac-window" id="windowMusic">
-    <div class="window-header">
-      <div class="window-dots"><div class="dot dot-close" onclick="closeWindow('windowMusic')"></div><div class="dot dot-min"></div><div class="dot dot-max"></div></div>
-      <div class="window-title">Dina_Playlist.mp3</div>
-    </div>
-    <div class="window-body" style="text-align: center;">
-      <div style="font-size: 60px; margin-bottom: 10px;">🎶</div>
-      <h3 style="color: #ff4d6d;">Romantic Piano Melody</h3>
-      <p style="font-size: 13px; color: #666; margin-top: 5px;">Playing specially for Ishrat Jahan Dina ❤️</p>
-      <button onclick="toggleMusic()" style="margin-top: 15px; padding: 8px 20px; border-radius: 15px; border: none; background: #ff4d6d; color: white; cursor: pointer; font-weight: bold;">Pause / Play 🎵</button>
-    </div>
-  </div>
+  <!-- Modal 4: Proposal -->
+  <div class="cosmic-modal" id="modalProposal">
+    <span class="close-btn" onclick="closeModal('modalProposal')">&times;</span>
+    <h2 style="color: #ff4d6d; font-size: 22px;">একটি চিরন্তন প্রশ্ন... 💍</h2>
+    <p style="font-size: 15px; color: #590d22; margin-top: 10px; font-weight: 600;">
+      দিনা, বাংলা লোফাই গানের মতো চিরচেনা ও সুন্দর সুর হয়ে সারাজীবন আমার পাশে থাকবে তো?
+    </p>
 
-  <!-- Window 4: Proposal Box -->
-  <div class="mac-window" id="windowProposal">
-    <div class="window-header">
-      <div class="window-dots"><div class="dot dot-close" onclick="closeWindow('windowProposal')"></div><div class="dot dot-min"></div><div class="dot dot-max"></div></div>
-      <div class="window-title">System_Question.exe</div>
+    <div class="btn-group">
+      <button class="btn-yes" onclick="sheSaidYes()">হ্যাঁ, অবশ্যই! 🥰</button>
+      <button class="btn-no" id="noBtn" onmouseover="dodgeButton()" ontouchstart="dodgeButton()">না 😜</button>
     </div>
-    <div class="window-body" style="text-align: center;">
-      <h2 style="color: #ff4d6d; font-size: 20px;">একটি চিরন্তন প্রশ্ন... 💍</h2>
-      <p style="font-size: 15px; color: #444; margin: 15px 0;">
-        দিনা, তুমি কি সারাজীবন ঠিক এভাবেই আমার সাথে থেকে এই জীবনের পথ চলবে?
-      </p>
-
-      <div class="btn-group">
-        <button class="btn-yes" onclick="sheSaidYes()">হ্যাঁ, অবশ্যই! 🥰</button>
-        <button class="btn-no" id="noBtn" onmouseover="dodgeButton()" ontouchstart="dodgeButton()">না 😜</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Dock Bar -->
-  <div class="dock-bar">
-    <div style="font-size: 28px; cursor: pointer;" onclick="openWindow('windowLetter')">💌</div>
-    <div style="font-size: 28px; cursor: pointer;" onclick="openWindow('windowGallery')">🖼️</div>
-    <div style="font-size: 28px; cursor: pointer;" onclick="openWindow('windowMusic')">🎵</div>
-    <div style="font-size: 28px; cursor: pointer;" onclick="openWindow('windowProposal')">💍</div>
   </div>
 
   <script>
-    // Live Clock Logic
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('liveClock').innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    // Audio Autoplay Control
+    const music = document.getElementById('bgMusic');
+    let isPlaying = false;
 
-    // Unlock OS
-    function unlockOS() {
-      document.getElementById('lockScreen').style.opacity = '0';
-      setTimeout(() => {
-        document.getElementById('lockScreen').style.display = 'none';
-        openWindow('windowProposal'); // Auto open proposal window
-      }, 800);
-
-      // Music Play
-      document.getElementById('bgMusic').play();
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        document.getElementById('musicIcon').innerText = '🔇';
+      } else {
+        music.play();
+        document.getElementById('musicIcon').innerText = '🎵';
+      }
+      isPlaying = !isPlaying;
     }
 
-    // Window Management
-    function openWindow(id) {
-      document.querySelectorAll('.mac-window').forEach(win => win.style.display = 'none');
-      const win = document.getElementById(id);
-      win.style.display = 'block';
+    // Auto Play on first touch
+    document.body.addEventListener('click', () => {
+      if (!isPlaying) {
+        music.play().then(() => { isPlaying = true; }).catch(e => console.log('Audio blocked'));
+      }
+    }, { once: true });
 
-      // Reset No button position if Proposal window opens
-      if (id === 'windowProposal') {
+    // Modal Controls
+    function openModal(id) {
+      document.querySelectorAll('.cosmic-modal').forEach(m => m.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      if(id === 'modalProposal') {
         const noBtn = document.getElementById('noBtn');
-        noBtn.style.right = '30px';
+        noBtn.style.right = '25px';
         noBtn.style.top = '0px';
       }
     }
 
-    function closeWindow(id) {
-      document.getElementById(id).style.display = 'none';
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
     }
 
     // Dodging No Button
     function dodgeButton() {
       const btn = document.getElementById('noBtn');
-      const win = document.getElementById('windowProposal');
+      const win = document.getElementById('modalProposal');
 
-      const maxX = win.offsetWidth - btn.offsetWidth - 30;
-      const maxY = win.offsetHeight - btn.offsetHeight - 50;
+      const maxX = win.offsetWidth - btn.offsetWidth - 40;
+      const maxY = win.offsetHeight - btn.offsetHeight - 40;
 
       const randomX = Math.floor(Math.random() * maxX);
       const randomY = Math.floor(Math.random() * maxY);
@@ -389,18 +324,90 @@
       btn.style.top = randomY + 'px';
     }
 
-    // Music Toggle
-    let isPlaying = true;
-    function toggleMusic() {
-      const music = document.getElementById('bgMusic');
-      if (isPlaying) music.pause(); else music.play();
-      isPlaying = !isPlaying;
-    }
-
     // Celebration
     function sheSaidYes() {
-      alert("I knew it, Dina! You are my forever love! ❤️🎉");
+      alert("I Love You So Much, Dina! 💖🌸");
+      explodeHearts();
+      closeModal('modalProposal');
     }
+
+    // Interactive Pink Star Canvas
+    const canvas = document.getElementById('spaceCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+
+    // Floating Sparkles & Hearts
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        speedY: Math.random() * 0.8 + 0.2,
+        opacity: Math.random()
+      });
+    }
+
+    // Touch Sparkle Effect
+    window.addEventListener('click', (e) => {
+      for (let i = 0; i < 15; i++) {
+        particles.push({
+          x: e.clientX,
+          y: e.clientY,
+          vx: (Math.random() - 0.5) * 5,
+          vy: (Math.random() - 0.5) * 5,
+          size: Math.random() * 4 + 2,
+          life: 1,
+          isHeart: true
+        });
+      }
+    });
+
+    function explodeHearts() {
+      for (let i = 0; i < 80; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 10,
+          vy: (Math.random() - 0.5) * 10,
+          size: Math.random() * 6 + 3,
+          life: 1.5,
+          isHeart: true
+        });
+      }
+    }
+
+    function animatePinkUniverse() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p, index) => {
+        if (p.isHeart) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= 0.02;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(p.life, 0)})`;
+          ctx.fill();
+
+          if (p.life <= 0) particles.splice(index, 1);
+        } else {
+          p.y -= p.speedY;
+          if (p.y < 0) p.y = canvas.height;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+          ctx.fill();
+        }
+      });
+
+      requestAnimationFrame(animatePinkUniverse);
+    }
+    animatePinkUniverse();
   </script>
 </body>
 </html>
