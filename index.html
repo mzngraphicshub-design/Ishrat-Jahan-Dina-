@@ -3,411 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Dina Pink Universe ✨ | Ishrat Jahan Dina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <title>A Special Journey for Dina ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Hind Siliguri', sans-serif;
-      user-select: none;
     }
 
     body {
-      background: radial-gradient(circle at center, #ff85a1 0%, #ff4d6d 45%, #590d22 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #31102f 100%);
       min-height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* Main Card Wrapper */
+    .card-wrapper {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(30, 41, 59, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 30px 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* Pink Canvas */
-    #spaceCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
-    }
-
-    /* Main Container */
-    .galaxy-container {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      width: 90%;
-      max-width: 500px;
-    }
-
-    .title-header h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 28px;
-      letter-spacing: 2px;
-      color: #fff;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px #ff758f;
-      margin-bottom: 5px;
-    }
-
-    .title-header p {
-      font-size: 15px;
-      color: #fff0f3;
-      opacity: 0.95;
-      font-weight: 600;
+    /* Progress Bar */
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
       margin-bottom: 25px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-
-    /* Floating Pink Glass Cards */
-    .orbs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 15px;
-    }
-
-    .orb-card {
-      background: rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(255, 255, 255, 0.45);
-      border-radius: 22px;
-      padding: 22px 12px;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 25px rgba(89, 13, 34, 0.3);
-      position: relative;
       overflow: hidden;
     }
-
-    .orb-card:hover {
-      transform: translateY(-8px) scale(1.04);
-      background: rgba(255, 255, 255, 0.32);
-      border-color: #fff;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    .progress-bar {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, #38bdf8, #f43f5e);
+      border-radius: 10px;
+      transition: width 0.4s ease;
     }
 
-    .orb-icon {
-      font-size: 38px;
-      margin-bottom: 8px;
+    /* Step Card Sections */
+    .step-card {
+      display: none;
+      animation: fadeInSlide 0.5s ease forwards;
+    }
+    .step-card.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Badges & Typography */
+    .badge {
       display: inline-block;
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-      animation: float 3s ease-in-out infinite;
+      padding: 4px 12px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 20px;
+      margin-bottom: 12px;
     }
 
-    .orb-title {
+    .badge-love {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.3);
+    }
+
+    h2 {
+      font-size: 22px;
+      color: #f1f5f9;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Image Box */
+    .img-box {
+      width: 100%;
+      height: 190px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 15px 0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Feature Grid */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 15px 0;
+    }
+    .feature-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-align: left;
+      font-size: 14px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Highlight Quote */
+    .quote-box {
+      background: rgba(244, 63, 94, 0.1);
+      border-left: 3px solid #f43f5e;
+      padding: 14px 16px;
+      border-radius: 0 12px 12px 0;
+      margin: 15px 0;
+      font-style: italic;
+      color: #fecdd3;
+      font-size: 14px;
+    }
+
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn {
+      padding: 11px 22px;
       font-size: 15px;
       font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Modal / Popups */
-    .cosmic-modal {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      width: 88%;
-      max-width: 430px;
-      background: rgba(255, 240, 243, 0.94);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border: 2px solid #ff758f;
-      box-shadow: 0 15px 40px rgba(89, 13, 34, 0.4);
-      border-radius: 25px;
-      padding: 30px 20px;
-      z-index: 100;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.4s ease;
-      text-align: center;
-      color: #590d22;
-    }
-
-    .cosmic-modal.active {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px; right: 20px;
-      font-size: 24px;
-      color: #ff4d6d;
+      border-radius: 20px;
+      border: none;
       cursor: pointer;
-      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .btn-next {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: white;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+    .btn-next:hover { transform: translateY(-2px); }
+
+    .btn-love {
+      background: linear-gradient(135deg, #f43f5e, #e11d48);
+      color: white;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+    }
+    .btn-love:hover { transform: translateY(-2px); scale: 1.02; }
+
+    .btn-prev {
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
     }
 
-    /* Polaroid Cards Inside Modal */
-    .modal-gallery {
-      display: flex; gap: 10px; justify-content: center; margin-top: 15px;
-    }
-    .modal-gallery img {
-      width: 48%; height: 130px; object-fit: cover; border-radius: 12px; border: 3px solid #ffffff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-
-    /* Proposal Buttons */
-    .btn-group {
-      display: flex; justify-content: center; gap: 15px; margin-top: 25px; position: relative; min-height: 50px;
-    }
-    .btn-yes {
-      padding: 12px 30px; background: linear-gradient(45deg, #ff4d6d, #c9184a); color: white; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.5);
-    }
-    .btn-no {
-      padding: 12px 30px; background: #800f2f; color: white; border: none; border-radius: 25px; font-size: 16px; font-weight: bold; position: absolute;
+    /* Final Decision Buttons */
+    .proposal-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    /* Music Control Floating Button */
-    .music-btn {
+    /* Canvas Confetti */
+    #confettiCanvas {
       position: fixed;
-      top: 15px; right: 15px;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      color: white; font-size: 18px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; z-index: 1000;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Music Toggle -->
-  <button class="music-btn" onclick="toggleMusic()" id="musicIcon">🎵</button>
+  <canvas id="confettiCanvas"></canvas>
 
-  <!-- Audio Source: Chill Bangla Lofi Track -->
-  <audio id="bgMusic" loop preload="auto">
-    <!-- পছন্দের কোনো নির্দিষ্ট গান দিতে চাইলে 'bangla_lofi.mp3' ফাইলের নাম বা লিংক বসিয়ে দিতে পারো -->
-    <source src="https://cdn.pixabay.com/download/audio/2022/11/06/audio_c9e0a2df3d.mp3?filename=chill-lofi-song-8444.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Pink Canvas -->
-  <canvas id="spaceCanvas"></canvas>
-
-  <!-- Main Screen -->
-  <div class="galaxy-container">
-    <div class="title-header">
-      <h1>DINA'S PINK WORLD</h1>
-      <p>গোলাপী স্বপ্নের রাজত্বে ইশরাত জাহান দিনাকে স্বাগতম 🌸</p>
+  <div class="card-wrapper">
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <div class="orbs-grid">
-      <div class="orb-card" onclick="openModal('modalLetter')">
-        <div class="orb-icon">💌</div>
-        <div class="orb-title">গোলাপী চিঠি</div>
+    <!-- PART 1: Identity Verification -->
+    <div class="step-card active" id="step1">
+      <span class="badge">Part 1 of 5 • Identity</span>
+      <h2>বিশেষ সিক্রেট এক্সেস 🔐</h2>
+      <p>এই সিক্রেট পেজটি এমন একজনের জন্য সাজানো, যার ব্যক্তিত্ব সাধারণের চেয়ে একদম আলাদা। এগিয়ে যাওয়ার আগে পরিচয় নিশ্চিত করা প্রয়োজন!</p>
+      
+      <div class="feature-item" style="justify-content: center; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3);">
+        <span>👤 লক্ষ্য ব্যক্তি: <b>Ishrat Jahan Dina</b></span>
       </div>
-      <div class="orb-card" onclick="openModal('modalGallery')">
-        <div class="orb-icon">📸</div>
-        <div class="orb-title">মিষ্টি স্মৃতিরা</div>
-      </div>
-      <div class="orb-card" onclick="openModal('modalMagic')">
-        <div class="orb-icon">💖</div>
-        <div class="orb-title">ভালোবাসার সমীকরণ</div>
-      </div>
-      <div class="orb-card" onclick="openModal('modalProposal')">
-        <div class="orb-icon">💍</div>
-        <div class="orb-title">বিশেষ প্রস্তাব</div>
+
+      <p style="font-size: 13px; color: #94a3b8; margin-top: 15px;">তুমি কি সত্যিই সেই দিনা?</p>
+
+      <div class="nav-buttons" style="justify-content: flex-end;">
+        <button class="btn btn-next" onclick="nextStep()">হ্যাঁ, আমি দিনা! ➔</button>
       </div>
     </div>
-  </div>
 
-  <!-- Modal 1: Letter -->
-  <div class="cosmic-modal" id="modalLetter">
-    <span class="close-btn" onclick="closeModal('modalLetter')">&times;</span>
-    <h2 style="color: #c9184a; font-size: 22px; margin-bottom: 10px;">প্রিয় ইশরাত জাহান দিনা 🌸</h2>
-    <p style="font-size: 15px; line-height: 1.7; color: #590d22; text-align: left;">
-      আমার পুরোটা জুড়ে শুধু তোমার উপস্থিতি। তোমার এই মিষ্টি হাসি, অমূল্য অভিমান আর এক আকাশ ভালোবাসাই আমার বেঁচে থাকার সেরা অনুপ্রেরণা।
-      <br><br>
-      আজকের এই লোর বাংলা সুমো আর পিংক পৃথিবীর প্রতিটি আলো শুধু তোমার মিষ্টি হাসির জন্য সাজানো! ❤️
-    </p>
-  </div>
+    <!-- PART 2: Appreciation & Friend Base -->
+    <div class="step-card" id="step2">
+      <span class="badge">Part 2 of 5 • Appreciation</span>
+      <h2>তোমার ব্যক্তিত্বের উজ্জ্বল দিকগুলো 🌟</h2>
+      <p>শুরুতেই বলে রাখি, একজন মানুষ হিসেবে তোমার চিন্তাভাবনা ও রুচিবোধ সতীতি অসাধারণ। তোমার ৩টি বৈশিষ্ট্য যেকোনো মানুষকে মুগ্ধ করবে:</p>
 
-  <!-- Modal 2: Gallery -->
-  <div class="cosmic-modal" id="modalGallery">
-    <span class="close-btn" onclick="closeModal('modalGallery')">&times;</span>
-    <h2 style="color: #c9184a; font-size: 20px;">মিষ্টি কিছু মুহূর্ত 📸</h2>
-    <div class="modal-gallery">
-      <img src="dina1.jpg" alt="Dina 1" onerror="this.src='https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400'">
-      <img src="dina2.jpg" alt="Dina 2" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400'">
+      <div class="grid-cards">
+        <div class="feature-item">
+          <span>😊 <b>সহজ-সরল পজিটিভিটি:</b> তোমার উপস্থিতি যেকোনো অগোছালো পরিবেশকে শান্ত ও সুন্দর করে তোলে।</span>
+        </div>
+        <div class="feature-item">
+          <span>🧠 <b>পরিপক্ক চিন্তাধারা:</b> আবেগের পাশাপাশি যেকোনো বিষয়ে তোমার ঠান্ডা মাথার লজিক্যাল দৃষ্টিভঙ্গি প্রশংসনীয়।</span>
+        </div>
+        <div class="feature-item">
+          <span>✨ <b>বিশ্বস্ত আচরণ:</b> একজন সুহৃদ বা ভালো বন্ধু হিসেবে তোমার গুরুত্ব যেকোনো সম্পর্কের চেয়ে উপরে।</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-prev" onclick="prevStep()">⬅ পেছনে</button>
+        <button class="btn btn-next" onclick="nextStep()">পরবর্তী ➔</button>
+      </div>
     </div>
-    <p style="font-size: 14px; color: #a4133c; margin-top: 12px; font-weight: bold;">তুমি হাসলে আমার পুরো পৃথিবী হেসে ওঠে ✨</p>
-  </div>
 
-  <!-- Modal 3: Magic Predictor -->
-  <div class="cosmic-modal" id="modalMagic">
-    <span class="close-btn" onclick="closeModal('modalMagic')">&times;</span>
-    <h2 style="color: #c9184a; font-size: 20px;">প্রেমের রাশিফল 🔮</h2>
-    <div style="background: #fff0f3; padding: 15px; border-radius: 15px; margin-top: 15px; font-size: 14px; line-height: 1.6; color: #800f2f; border: 1px dashed #ff4d6d;">
-      <b>গ্রহ ও নক্ষত্রের ভবিষ্যৎবাণী:</b>
-      <br>
-      ইশরাত জাহান দিনাকে সারা জীবন অতিরিক্ত আদরে ও ভালোবাসায় মুড়িয়ে রাখা হবে! 🙈❤️
+    <!-- PART 3: The Logical Shift (Bridge) -->
+    <div class="step-card" id="step3">
+      <span class="badge">Part 3 of 5 • Transition</span>
+      <h2>বন্ধুত্ব থেকে দৃষ্টিভঙ্গির পরিবর্তন 💭</h2>
+      <p>সাধারণত লজিক বলে, ভালো বন্ধুদের মাঝেই সেরা বোঝাপড়া থাকে। কিন্তু সবসময় সব অনুভূতি কেবল 'বন্ধুত্বে' সীমাবদ্ধ রাখা সম্ভব হয় না।</p>
+
+      <div class="img-box">
+        <img src="dina1.jpg" alt="Dina Picture" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600'">
+      </div>
+
+      <div class="quote-box">
+        "কিছু মানুষের সাথে কথা বললে মনে হয়— এদের সাথে জীবনটা পার করে দেওয়া কেবল আবেগের বিষয় নয়, বরং এটি জীবনের সবচেয়ে সঠিক ও যৌক্তিক সিদ্ধান্ত।"
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-prev" onclick="prevStep()">⬅ পেছনে</button>
+        <button class="btn btn-next" onclick="nextStep()">পরবর্তী ➔</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Modal 4: Proposal -->
-  <div class="cosmic-modal" id="modalProposal">
-    <span class="close-btn" onclick="closeModal('modalProposal')">&times;</span>
-    <h2 style="color: #ff4d6d; font-size: 22px;">একটি চিরন্তন প্রশ্ন... 💍</h2>
-    <p style="font-size: 15px; color: #590d22; margin-top: 10px; font-weight: 600;">
-      দিনা, বাংলা লোফাই গানের মতো চিরচেনা ও সুন্দর সুর হয়ে সারাজীবন আমার পাশে থাকবে তো?
-    </p>
+    <!-- PART 4: 3 Logical Reasons for Love -->
+    <div class="step-card" id="step4">
+      <span class="badge badge-love">Part 4 of 5 • Logic & Heart</span>
+      <h2>ভালোবাসার ৩টি সুনির্দিষ্ট কারণ 💡</h2>
+      <p>কেন কেবল বন্ধুত্বে না থেকে তোমাকে হৃদয়ের একান্তে রাখার এই পথটি বেছে নিলাম? এর পেছনে ৩টি সরল হিসাব আছে:</p>
 
-    <div class="btn-group">
-      <button class="btn-yes" onclick="sheSaidYes()">হ্যাঁ, অবশ্যই! 🥰</button>
-      <button class="btn-no" id="noBtn" onmouseover="dodgeButton()" ontouchstart="dodgeButton()">না 😜</button>
+      <div class="grid-cards">
+        <div class="feature-item" style="border-color: rgba(244, 63, 94, 0.3);">
+          <span>🤝 <b>১. মজবুত ভিত্তি:</b> সেরা ভালোবাসার সম্পর্ক তৈরি হয় গভীর বোঝাপড়া ও বন্ধুত্ব থেকে।</span>
+        </div>
+        <div class="feature-item" style="border-color: rgba(244, 63, 94, 0.3);">
+          <span>🕊️ <b>২. মানসিক স্বস্তি:</b> তোমার সাথে কথা বললে মনের ওপর কোনো চাপ থাকে না, নিজের মতো থাকা যায়।</span>
+        </div>
+        <div class="feature-item" style="border-color: rgba(244, 63, 94, 0.3);">
+          <span>💎 <b>৩. অনন্য মূল্য:</b> কোটি মানুষের ভিড়ে তোমার মতো ব্যক্তিত্ববান কাউকে বারবার খুঁজে পাওয়া যায় না।</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-prev" onclick="prevStep()">⬅ পেছনে</button>
+        <button class="btn btn-next btn-love" onclick="nextStep()">ফাইনাল কথা ➔</button>
+      </div>
     </div>
+
+    <!-- PART 5: Impressive Proposal Ending -->
+    <div class="step-card" id="step5">
+      <span class="badge badge-love">Part 5 of 5 • Final Proposal</span>
+      <h2>প্রিয় ইশরাত জাহান দিনা 💖</h2>
+      <p style="text-align: left; line-height: 1.8;">
+        মন এবং মস্তিস্ক— দুটোর হিসাব মেলালেই একটা সিদ্ধান্ত স্পষ্ট হয়ে ওঠে। তুমি কেবল আমার খুব পছন্দের একজন মানুষ নও, তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতির নাম।
+        <br><br>
+        কথা দিচ্ছি, জীবনটাকে সহজ, সম্মানজনক এবং সুন্দর ভালোবাসায় ভরিয়ে রাখব। 
+        <br><br>
+        <b>তুমি কি আমার এই জীবনের পথচলায় বিশেষ কেউ হয়ে পাশে থাকবে? ✨</b>
+      </p>
+
+      <div class="proposal-btns">
+        <button class="btn btn-love" onclick="acceptProposal()" style="width: 100%; font-size: 16px; padding: 14px;">হ্যাঁ, আমি রাজি! 🥰✨</button>
+        <button class="btn btn-prev" onclick="thinkAboutIt()" style="width: 100%; font-size: 14px;">একটু ভেবে জানাবো 🙈</button>
+      </div>
+    </div>
+
   </div>
 
   <script>
-    // Audio Autoplay Control
-    const music = document.getElementById('bgMusic');
-    let isPlaying = false;
+    let currentStep = 1;
+    const totalSteps = 5;
 
-    function toggleMusic() {
-      if (isPlaying) {
-        music.pause();
-        document.getElementById('musicIcon').innerText = '🔇';
-      } else {
-        music.play();
-        document.getElementById('musicIcon').innerText = '🎵';
-      }
-      isPlaying = !isPlaying;
+    function updateStep() {
+      document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+      document.getElementById(`step${currentStep}`).classList.add('active');
+
+      const progressPercent = (currentStep / totalSteps) * 100;
+      document.getElementById('progressBar').style.width = `${progressPercent}%`;
     }
 
-    // Auto Play on first touch
-    document.body.addEventListener('click', () => {
-      if (!isPlaying) {
-        music.play().then(() => { isPlaying = true; }).catch(e => console.log('Audio blocked'));
-      }
-    }, { once: true });
-
-    // Modal Controls
-    function openModal(id) {
-      document.querySelectorAll('.cosmic-modal').forEach(m => m.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      if(id === 'modalProposal') {
-        const noBtn = document.getElementById('noBtn');
-        noBtn.style.right = '25px';
-        noBtn.style.top = '0px';
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStep();
       }
     }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStep();
+      }
     }
 
-    // Dodging No Button
-    function dodgeButton() {
-      const btn = document.getElementById('noBtn');
-      const win = document.getElementById('modalProposal');
-
-      const maxX = win.offsetWidth - btn.offsetWidth - 40;
-      const maxY = win.offsetHeight - btn.offsetHeight - 40;
-
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
-
-      btn.style.left = randomX + 'px';
-      btn.style.top = randomY + 'px';
+    function acceptProposal() {
+      triggerConfetti();
+      alert("I Love You So Much, Dina! 💖 জীবনের সেরা সিদ্ধান্ত নেওয়ার জন্য ধন্যবাদ ✨");
     }
 
-    // Celebration
-    function sheSaidYes() {
-      alert("I Love You So Much, Dina! 💖🌸");
-      explodeHearts();
-      closeModal('modalProposal');
+    function thinkAboutIt() {
+      alert("যত খুশি সময় নাও দিনা! তোমার উত্তরের অপেক্ষায় রইলাম। 🌸");
     }
 
-    // Interactive Pink Star Canvas
-    const canvas = document.getElementById('spaceCanvas');
+    // Confetti Animation
+    const canvas = document.getElementById('confettiCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     let particles = [];
 
-    // Floating Sparkles & Hearts
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        speedY: Math.random() * 0.8 + 0.2,
-        opacity: Math.random()
-      });
-    }
-
-    // Touch Sparkle Effect
-    window.addEventListener('click', (e) => {
-      for (let i = 0; i < 15; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          vx: (Math.random() - 0.5) * 5,
-          vy: (Math.random() - 0.5) * 5,
-          size: Math.random() * 4 + 2,
-          life: 1,
-          isHeart: true
-        });
-      }
-    });
-
-    function explodeHearts() {
-      for (let i = 0; i < 80; i++) {
+    function triggerConfetti() {
+      for (let i = 0; i < 120; i++) {
         particles.push({
           x: canvas.width / 2,
           y: canvas.height / 2,
-          vx: (Math.random() - 0.5) * 10,
-          vy: (Math.random() - 0.5) * 10,
-          size: Math.random() * 6 + 3,
-          life: 1.5,
-          isHeart: true
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.5) * 14,
+          color: `hsl(${Math.random() * 60 + 330}, 100%, 65%)`,
+          size: Math.random() * 8 + 4,
+          life: 1
         });
       }
     }
 
-    function animatePinkUniverse() {
+    function animateConfetti() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       particles.forEach((p, index) => {
-        if (p.isHeart) {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life -= 0.02;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.2;
+        p.life -= 0.015;
 
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(p.life, 0)})`;
-          ctx.fill();
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(p.life, 0);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
 
-          if (p.life <= 0) particles.splice(index, 1);
-        } else {
-          p.y -= p.speedY;
-          if (p.y < 0) p.y = canvas.height;
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-          ctx.fill();
-        }
+        if (p.life <= 0) particles.splice(index, 1);
       });
-
-      requestAnimationFrame(animatePinkUniverse);
+      requestAnimationFrame(animateConfetti);
     }
-    animatePinkUniverse();
+    animateConfetti();
   </script>
 </body>
 </html>
